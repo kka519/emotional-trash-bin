@@ -57,7 +57,7 @@ except:
 # 2. 사이드바 UI
 with st.sidebar:
     st.title("🗑️ 감정 쓰레기통")
-    st.caption("마음이 편안해지는 대나무숲 🌿")
+    st.caption("익명으로 털어놓는 나만의 공간")
     st.markdown("---")
     
     # 상담사 선택
@@ -143,5 +143,6 @@ if prompt := st.chat_input("욕을 쓰거나 소리를 질러도 됩니다."):
     
     st.session_state.messages.append({"role": "assistant", "content": msg})
     st.chat_message("assistant", avatar=avatar_img).write(msg)
+
 
 
