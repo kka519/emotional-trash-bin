@@ -1,7 +1,19 @@
 import streamlit as st
+import streamlit.components.v1 as components 
 from openai import OpenAI
 from streamlit_lottie import st_lottie
 import requests
+
+# ----------------------------------------------------------------
+# [<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1961963755273181"
+     crossorigin="anonymous"></script>]
+# ----------------------------------------------------------------
+def inject_adsense():
+    adsense_script = """
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1961963755273181"
+     crossorigin="anonymous"></script>
+    """
+    components.html(adsense_script, height=0)
 
 # [로티 애니메이션 불러오는 함수]
 def load_lottieurl(url: str):
@@ -19,6 +31,9 @@ st.set_page_config(
     page_icon="🗑️",
     layout="wide"
 )
+
+# 2. [중요] 설정 바로 밑에서 애드센스 함수 실행
+inject_adsense()
 
 # [디자인] 따뜻한 카페 분위기 + 워터마크 제거 + 푸터 디자인
 st.markdown("""
@@ -162,7 +177,7 @@ def show_chat():
             
     persona = st.session_state.selected_persona
     
-    # [🔥 핵심: 페르소나별 '말투 깎기' 프롬프트 엔지니어링]
+    # [페르소나별 '말투 깎기' 프롬프트]
     if "사이다" in persona:
         avatar_img = "🍺"
         welcome_msg = "야! 얼굴이 왜 그따위냐? 누가 또 너 건드렸냐? 아 씨바 내가 다 조져줄게, 일단 앉아서 썰 좀 풀어봐!"
@@ -173,7 +188,6 @@ def show_chat():
         2. '시발', '미친', '존나', '개같은' 같은 가벼운 비속어를 적절히 섞어서 사용자의 분노에 격하게 공감해라.
         3. 해결책을 줄 때는 시원시원하게 단호하게 말해라.
         4. 문장 끝에는 무조건 맥주 이모티콘(🍺)을 붙여라.
-        5. 예시: "야이 미친놈들이네 그거! 니가 참지 말고 들이받았어야지! 🍺"
         """
         
     elif "토닥이" in persona:
@@ -197,7 +211,6 @@ def show_chat():
         1. 감정을 배제하고 건조하고 논리적인 '하십시오'체 또는 '하게'체를 사용해라.
         2. 사용자의 말을 분석하고, 번호(1., 2.)를 매겨서 해결책을 정리해줘라.
         3. 위로보다는 실질적인 솔루션을 제시해라.
-        4. 예시: "현재 상황에서 귀하가 취할 수 있는 최선의 전략은 다음 3가지입니다."
         """
         
     else: # 욕쟁이 할매
@@ -210,7 +223,6 @@ def show_chat():
         2. '이 썩을 놈아', '문디 자슥아', '화상아' 같은 구수한 욕을 애정 있게 섞어라.
         3. 욕을 하지만 속마음은 사용자를 친손주처럼 걱정하고 챙겨줘라.
         4. 밥은 먹었는지 계속 물어봐라.
-        5. 예시: "아이고 문디야! 그 놈들이 눈깔이 삐었지 니가 뭐시 부족하노! 밥이나 무라!"
         """
 
     with c2:
