@@ -4,17 +4,6 @@ from openai import OpenAI
 from streamlit_lottie import st_lottie
 import requests
 
-# ----------------------------------------------------------------
-# [<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1961963755273181"
-     crossorigin="anonymous"></script>]
-# ----------------------------------------------------------------
-def inject_adsense():
-    adsense_script = """
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1961963755273181"
-     crossorigin="anonymous"></script>
-    """
-    components.html(adsense_script, height=0)
-
 # [로티 애니메이션 불러오는 함수]
 def load_lottieurl(url: str):
     try:
@@ -25,6 +14,13 @@ def load_lottieurl(url: str):
     except:
         return None
 
+# ----------------------------------------------------------------
+# [<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1961963755273181"crossorigin="anonymous"></script>] 
+# ----------------------------------------------------------------
+def inject_adsense():
+    adsense_script = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1961963755273181" crossorigin="anonymous"></script>'
+    components.html(adsense_script, height=0)
+
 # 1. 페이지 설정
 st.set_page_config(
     page_title="감정 쓰레기통",
@@ -32,7 +28,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# 2. [중요] 설정 바로 밑에서 애드센스 함수 실행
+# 2. 애드센스 실행
 inject_adsense()
 
 # [디자인] 따뜻한 카페 분위기 + 워터마크 제거 + 푸터 디자인
@@ -64,7 +60,7 @@ st.markdown("""
     }
     .stButton > button:hover {
         background-color: #FFB74D;
-        transform: scale(1.02); /* 살짝 커지는 효과 */
+        transform: scale(1.02);
     }
     
     /* 카드 디자인 */
