@@ -15,7 +15,7 @@ def load_lottieurl(url: str):
         return None
 
 # ----------------------------------------------------------------
-# [<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1961963755273181"crossorigin="anonymous"></script>] 
+# [<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1961963755273181" crossorigin="anonymous"></script>] 
 # ----------------------------------------------------------------
 def inject_adsense():
     adsense_script = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1961963755273181" crossorigin="anonymous"></script>'
@@ -263,3 +263,4 @@ st.markdown("""
         <span style='font-size: 10px; color: #BBB;'>All rights reserved. powered by OpenAI</span>
     </div>
     """, unsafe_allow_html=True)
+
