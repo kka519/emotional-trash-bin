@@ -239,3 +239,19 @@ def show_chat():
             model="gpt-4o-mini",
             messages=[{"role": "system", "content": system_prompt}] + st.session_state.messages
         )
+        msg = response.choices[0].message.content
+        st.session_state.messages.append({"role": "assistant", "content": msg})
+        st.chat_message("assistant", avatar=avatar_img).write(msg)
+
+# --- 메인 실행 & 푸터 ---
+if st.session_state.page == "intro":
+    show_intro()
+else:
+    show_chat()
+
+st.markdown("""
+    <div class="custom-footer">
+        Designed by <b>Luna</b> | © 2026 Emotional Trash Bin <br>
+        <span style='font-size: 10px; color: #BBB;'>All rights reserved. powered by OpenAI</span>
+    </div>
+    """, unsafe_allow_html=True)
