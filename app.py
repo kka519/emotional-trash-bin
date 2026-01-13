@@ -68,7 +68,7 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     
-    /* 🦶 우리가 만든 커스텀 푸터 */
+    /* 🦶 Luna님의 커스텀 푸터 */
     .custom-footer {
         position: fixed;
         bottom: 0;
@@ -186,14 +186,13 @@ def show_chat():
     if "messages" not in st.session_state or not st.session_state.messages:
         st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
 
-    # 채팅창 높이 확보를 위해 빈 공간 추가 (푸터에 가리지 않게)
+    # 채팅창 높이 확보
     for msg in st.session_state.messages:
         if msg["role"] == "assistant":
             st.chat_message(msg["role"], avatar=avatar_img).write(msg["content"])
         else:
             st.chat_message(msg["role"], avatar="😢").write(msg["content"])
     
-    # 하단 여백 추가
     st.write("---")
     st.write(" ")
     st.write(" ")
@@ -217,10 +216,10 @@ if st.session_state.page == "intro":
 else:
     show_chat()
 
-# [푸터] 모든 페이지 하단에 고정 노출
+# [푸터] Luna님 전용 브랜딩
 st.markdown("""
     <div class="custom-footer">
-        Designed by <b>Son Jeong-eun</b> | © 2026 Emotional Trash Bin <br>
+        Designed by <b>Luna</b> | © 2026 Emotional Trash Bin <br>
         <span style='font-size: 10px; color: #BBB;'>All rights reserved. powered by OpenAI</span>
     </div>
     """, unsafe_allow_html=True)
